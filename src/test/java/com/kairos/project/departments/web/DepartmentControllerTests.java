@@ -2,10 +2,10 @@ package com.kairos.project.departments.web;
 
 import io.restassured.http.ContentType;
 import lombok.SneakyThrows;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.testcontainers.shaded.org.apache.commons.lang3.RandomStringUtils;
 import com.kairos.project.base.ProjectBaseTest;
 import com.kairos.project.departments.model.Department;
 import com.kairos.project.departments.model.DepartmentRepository;
@@ -23,7 +23,7 @@ public class DepartmentControllerTests extends ProjectBaseTest {
 
 	@Test
 	void shouldGetAll() {
-		createAndSaveDepartment("Dep " + RandomStringUtils.random(10));
+		createAndSaveDepartment("Dep " + RandomStringUtils.insecure().next(10));
 
 		var departments = departmentRepository.findAll();
 		var validateble = givenEditorAuth().contentType(ContentType.JSON).when()
@@ -38,7 +38,7 @@ public class DepartmentControllerTests extends ProjectBaseTest {
 
 	@Test
 	void shouldGetById() {
-		var entity = createAndSaveDepartment("Dep " + RandomStringUtils.random(10));
+		var entity = createAndSaveDepartment("Dep " + RandomStringUtils.insecure().next(10));
 
 		givenEditorAuth().contentType(ContentType.JSON).when()
 				.get(DEPARTMENTS_API + PARAM_ID, entity.getId())
@@ -51,7 +51,7 @@ public class DepartmentControllerTests extends ProjectBaseTest {
 	@Test
 	@SneakyThrows
 	void shouldCreateSuccessfully() {
-		var request = new DepartmentRequest("Dep " + RandomStringUtils.random(10));
+		var request = new DepartmentRequest("Dep " + RandomStringUtils.insecure().next(10));
 		givenEditorAuth().contentType(ContentType.JSON)
 				.body(jsonMapper.writeValueAsString(request)).when()
 				.post(DEPARTMENTS_API)
@@ -89,7 +89,7 @@ public class DepartmentControllerTests extends ProjectBaseTest {
 
 	@Test
 	void shouldDeleteById() {
-		var entity = createAndSaveDepartment("Dep " + RandomStringUtils.random(10));
+		var entity = createAndSaveDepartment("Dep " + RandomStringUtils.insecure().next(10));
 
 		assertThat(departmentRepository.findById(entity.getId())).isPresent();
 
