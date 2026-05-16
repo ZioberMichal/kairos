@@ -34,6 +34,7 @@
         <org.mapstruct.version>1.6.3</org.mapstruct.version>
         <org.projectlombok.version>1.18.46</org.projectlombok.version>
         <org.mockito.version>5.23.0</org.mockito.version>
+        <com.mysql.version>9.7.0</com.mysql.version>
     </properties>
     <dependencies>
         <dependency>
@@ -91,7 +92,7 @@
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-            <version>9.7.0</version>
+            <version>${com.mysql.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
