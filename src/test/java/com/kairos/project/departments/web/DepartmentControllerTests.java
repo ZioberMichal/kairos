@@ -78,7 +78,7 @@ public class DepartmentControllerTests extends ProjectBaseTest {
 				.post(DEPARTMENTS_API)
 				.then()
 				.statusCode(HttpStatus.BAD_REQUEST.value())
-				.body("status", is(HttpStatus.BAD_REQUEST.name()))
+				.body("status", is("400 BAD_REQUEST"))
 				.body("statusCode", is(HttpStatus.BAD_REQUEST.value()))
 				.body("messageKey", is("bad.data"))
 				.body("message", is("Name already exists!"))
