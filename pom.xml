@@ -35,6 +35,8 @@
         <org.projectlombok.version>1.18.46</org.projectlombok.version>
         <org.mockito.version>5.23.0</org.mockito.version>
         <com.mysql.version>9.7.0</com.mysql.version>
+        <com.zaxxer.HikariCP.version>7.0.2</com.zaxxer.HikariCP.version>
+        <org.flywaydb.version>12.6.1</org.flywaydb.version>
     </properties>
     <dependencies>
         <dependency>
@@ -94,18 +96,18 @@
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <version>7.0.2</version>
+            <version>${com.zaxxer.HikariCP.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
-            <version>12.6.1</version>
+            <version>${org.flywaydb.version}</version>
         </dependency>
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-mysql</artifactId>
-            <version>12.6.1</version>
+            <version>${org.flywaydb.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
