@@ -35,9 +35,11 @@ public class AssetControllerTests extends ProjectBaseTest {
 
 	@Test
 	void shouldGetAll() {
+		var assetNumber1 = "AN 1";
+		var assetNumber2 = "AN 2";
 		var entities = List.of(
-				new Asset(null, "Asset 1", "KKS 1"),
-				new Asset(null, "Asset 2", "KKS 2"));
+				new Asset(null, "Asset 1", assetNumber1),
+				new Asset(null, "Asset 2", assetNumber2));
 		assetRepository.saveAll(entities);
 
 		givenEditorAuth().contentType(ContentType.JSON).when()
@@ -46,15 +48,15 @@ public class AssetControllerTests extends ProjectBaseTest {
 				.body("_embedded.data", hasSize(2))
 				.body("_embedded.data[0].id", notNullValue())
 				.body("_embedded.data[0].name", is("Asset 1"))
-				.body("_embedded.data[0].assetNumber", is("KKS 1"))
+				.body("_embedded.data[0].assetNumber", is(assetNumber1))
 				.body("_embedded.data[1].id", notNullValue())
 				.body("_embedded.data[1].name", is("Asset 2"))
-				.body("_embedded.data[1].assetNumber", is("KKS 2"));
+				.body("_embedded.data[1].assetNumber", is(assetNumber2));
 	}
 
 	@Test
 	void shouldGetById() {
-		var asset = new Asset(null, "Asset 1", "KKS 1");
+		var asset = new Asset(null, "Asset 1", "AN 1");
 		var entity = assetRepository.save(asset);
 
 		givenEditorAuth().contentType(ContentType.JSON).when()
@@ -68,7 +70,7 @@ public class AssetControllerTests extends ProjectBaseTest {
 	@Test
 	@SneakyThrows
 	void shouldCreateSuccessfully() {
-		var request = new AssetRequest("Asset 1", "kks 1");
+		var request = new AssetRequest("Asset 1", "AN 1");
 		givenEditorAuth().contentType(ContentType.JSON)
 				.body(jsonMapper.writeValueAsString(request)).when()
 				.post(ASSETS_API)
@@ -80,7 +82,7 @@ public class AssetControllerTests extends ProjectBaseTest {
 
 	@Test
 	void shouldDeleteById() {
-		var entity = assetRepository.save(new Asset(null, "Asset 1", "KKS 1"));
+		var entity = assetRepository.save(new Asset(null, "Asset 1", "AN 1"));
 
 		assertThat(assetRepository.findById(entity.getId())).isPresent();
 
