@@ -7,6 +7,8 @@ import com.kairos.project.admin.web.AdminController;
 import com.kairos.project.assets.web.AssetController;
 import com.kairos.project.departments.web.DepartmentController;
 import com.kairos.project.employees.web.EmployeeController;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.MediaType;
@@ -24,6 +26,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 @RestController
 @RequestMapping(value = HATEOAS_API, produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
+@Tag(name = "HATEOAS", description = "Endpoint for discovering permission-based API links")
 public class HateoasController {
 
 	private final PermissionService permissionService;
@@ -36,6 +39,10 @@ public class HateoasController {
 	);
 
 	@GetMapping
+	@Operation(
+			summary = "Get API links",
+			description = "Returns HATEOAS links available to the authenticated user based on their permissions."
+	)
 	public EntityModel<Object> getHateoas() {
 		var model = EntityModel.of(new Object());
 		addDefaultLinks(model);

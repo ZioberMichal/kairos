@@ -1,5 +1,6 @@
 package com.kairos.project.admin.web;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.MediaType;
@@ -18,6 +19,7 @@ import static com.kairos.core.web.ApiConstants.Admin.Perms.ADMIN;
 @RestController
 @RequestMapping(value = ADMIN_API, produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
+@Tag(name = "Admin", description = "Administrative endpoints for retrieving information about the current admin user")
 public class AdminController {
 
 	private final AdminService adminService;
