@@ -40,9 +40,4 @@ Closes #<!-- Issue Number -->
 ## Screenshots / Recordings
 
 <!-- (If applicable) Add screenshots or screen recordings to help explain the changes. -->
-
-## Additional Notes
-
-<!-- Any additional information, questions, or concerns for the reviewers -->
-
 ---
