@@ -29,6 +29,12 @@
             <totalSizeCap>1GB</totalSizeCap>
         </rollingPolicy>
     </appender>
+    <appender name="ASYNC_FILE" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>512</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <includeCallerData>false</includeCallerData>
+        <appender-ref ref="FILE"/>
+    </appender>
 
     <!-- File appender for error logs only -->
     <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -48,6 +54,12 @@
             <maxHistory>30</maxHistory>
             <totalSizeCap>500MB</totalSizeCap>
         </rollingPolicy>
+    </appender>
+    <appender name="ASYNC_ERROR_FILE" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>256</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <includeCallerData>false</includeCallerData>
+        <appender-ref ref="ERROR_FILE"/>
     </appender>
 
     <!-- Development profile: More verbose logging -->
@@ -72,8 +84,8 @@
         <logger name="org.hibernate" level="WARN"/>
         <root level="INFO">
             <appender-ref ref="CONSOLE"/>
-            <appender-ref ref="FILE"/>
-            <appender-ref ref="ERROR_FILE"/>
+            <appender-ref ref="ASYNC_FILE"/>
+            <appender-ref ref="ASYNC_ERROR_FILE"/>
         </root>
     </springProfile>
 
@@ -84,8 +96,8 @@
         <logger name="org.springframework.security" level="WARN"/>
         <logger name="org.hibernate" level="WARN"/>
         <root level="WARN">
-            <appender-ref ref="FILE"/>
-            <appender-ref ref="ERROR_FILE"/>
+            <appender-ref ref="ASYNC_FILE"/>
+            <appender-ref ref="ASYNC_ERROR_FILE"/>
         </root>
     </springProfile>
 
