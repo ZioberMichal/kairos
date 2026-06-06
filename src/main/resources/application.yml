@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: kairos
+
+  # Database configuration is profile-specific
+  # Use: spring.profiles.active=mysql or spring.profiles.active=sqlite
+
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
