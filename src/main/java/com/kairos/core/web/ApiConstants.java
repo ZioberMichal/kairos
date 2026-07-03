@@ -71,4 +71,16 @@ public class ApiConstants {
 	public static class Hateoas {
 		public static final String HATEOAS_API = SERVICE + HATEOAS;
 	}
+
+	public static class Users {
+		public static class Perms {
+			@AllowedMethods(RequestMethod.POST)
+			public static final String USERS_REGISTER = "users_register";
+		}
+
+		public static final String USERS_API = SERVICE + "/users";
+		public static final String REGISTER = "/register";
+		public static final String RECOVER_REQUEST = "/recover/request";
+		public static final String RECOVER_CONFIRM = "/recover/confirm";
+	}
 }
