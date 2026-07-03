@@ -1,7 +1,10 @@
 package com.kairos.project.user.web;
 
-import com.kairos.core.web.ApiConstants;
-import com.kairos.project.user.model.PasswordRecoveryService;
-import com.kairos.project.user.model.UserService;
-import com.kairos.project.user.web.dto.PasswordRecoveryRequest;
-import com.kairos.project/user/web/dto/PasswordResetConfirmRequest;
+/**
+ * Placeholder removed. Keeping a minimal class to avoid compile errors in this branch.
+ * Remove this file entirely if you prefer.
+ */
+public final class InvalidPlaceholder {
+    private InvalidPlaceholder() {
+    }
+}
